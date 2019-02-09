@@ -1,0 +1,13 @@
+[package]
+name = "dreamer"
+version = "0.1.0"
+authors = ["Thomas-QM <thomas@engineeringvirtue.net>"]
+edition = "2018"
+
+[dependencies]
+serde = "1.0.87"
+serde_derive = "1.0.87"
+rayon = "1.0"
+
+sciter-rs = {path="./rust-sciter"}
+sciter-serde = {path="./rust-sciter/serde"}

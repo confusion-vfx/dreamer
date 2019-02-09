@@ -1,0 +1,37 @@
+- ui
+  - node search
+  - viewer zoom
+  - node panning
+- back
+  - rendering
+    - render (nodeid, options) -> image
+  - node store
+    - node id
+    - node name, data
+  - add node
+  - remove node
+  - modify node
+  - open comp -> nodes
+  - close comp -> nodes
+  - viewers linked to node ids
+  - picto with custom pixel type that implements DreamPixel or something and has unlimited channels
+- ideas
+  - wireless nodes are like elbow nodes with different color
+  - liveoutput node that uses gstreamer
+- what if wires are nodes
+- datatype trait
+  - display (hwnd or something, options) -> datares
+    - gfx or another renderer
+  - zoom
+  - pan
+  - rotate
+  - select
+  - options
+    - 3d & vr
+  - subviews todo
+- node trait
+  - inputs -> vec<String, DataType>
+  - outputs -> Vec<String, DataType>
+  - process (hashmap) -> noderes<DataType>
+  - time_change -> cacheresult enum (whether to clearcache or not)
+- frompython or something for both traits
