@@ -1,0 +1,60 @@
+include "animations.tis";
+
+include "util.tis";
+
+var locked = true;
+
+function error(desc) {
+    locked = true;
+    dialog { body: desc, caption: "Error", buttons: [{ caption:"OK", role:#ok, class:"ok", value:true }] };
+    locked = false;
+}
+
+function handle(x) {
+    if (x[0] == #error) {
+        error(x[1]);
+
+        return false;
+    } else return x[1];
+}
+
+Array.isError = function() {
+    return this[0] == #error;
+}
+
+function ignore(x) {
+    if (x[0] == #error) return null else return x[1];
+}
+
+var loadState = null;
+var loaded = false;
+function load(state) {
+    loadState = state;
+}
+
+function MinimizeButton() {
+    this.on("click", :evt {
+        view.windowState = View.WINDOW_MINIMIZED;
+    });
+}
+
+function MaximizeButton() {
+    this.on("click", :evt {
+        view.windowState = View.WINDOW_MAXIMIZED;
+    });
+}
+
+function CloseButton() {
+    this.on("click", :evt {
+        view.close();
+    });
+}
+
+event ready (evt, root) {
+    if (view.connectToInspector)
+        view.connectToInspector($(window));
+
+    self#splash.state.collapsed = true;
+    locked = false;
+    loaded = true;
+}

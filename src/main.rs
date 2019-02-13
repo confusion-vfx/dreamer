@@ -1,3 +1,8 @@
+extern crate failure;
+#[macro_use] extern crate failure_derive;
+
+extern crate uuid;
+
 extern crate serde;
 #[macro_use] extern crate serde_derive;
 extern crate rayon;
@@ -5,22 +10,37 @@ extern crate rayon;
 extern crate sciter;
 extern crate sciter_serde;
 
+extern crate vulkano;
+extern crate winit;
+
 pub use std::fs;
 pub use fs::File;
 pub use std::thread;
 pub use std::path::PathBuf;
-pub use std::sync::{Arc, Mutex};
+pub use std::sync::{Arc, Mutex, atomic};
+pub use std::collections::HashMap;
+
+pub use uuid::Uuid;
+
 pub use sciter::{host, window::Options, utf::w2s, Value, HELEMENT, EventHandler, HostHandler};
 
 pub mod model;
 use model::*;
 
 pub mod handler;
+pub mod data;
+pub mod channel;
+pub mod graph;
 
+//nodes
+pub mod image;
+
+#[cfg(not(debug_assertions))]
 pub struct MainHostHandler {
     assets: sciter::Archive
 }
 
+#[cfg(not(debug_assertions))]
 impl HostHandler for MainHostHandler {
     fn on_data_load(&mut self, pnm: &mut host::SCN_LOAD_DATA) -> Option<host::LOAD_RESULT> {
         let uri = &w2s(pnm.uri);

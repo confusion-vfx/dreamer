@@ -5,9 +5,17 @@ authors = ["Thomas-QM <thomas@engineeringvirtue.net>"]
 edition = "2018"
 
 [dependencies]
+failure = "0.1.5"
+failure_derive = "0.1.5"
+
+uuid = { version = "0.7", features = ["v4"] }
+
 serde = "1.0.87"
 serde_derive = "1.0.87"
 rayon = "1.0"
 
 sciter-rs = {path="./rust-sciter"}
 sciter-serde = {path="./rust-sciter/serde"}
+
+vulkano = "0.11"
+winit = "0.18.1"
