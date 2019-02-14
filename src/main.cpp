@@ -1,6 +1,5 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include <neither/either.hpp>
 
 int main(int argc, char *argv[])
 {
