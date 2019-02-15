@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
+        <file>../external/QuickQanava/src/qmldir_plugin</file>
     </qresource>
 </RCC>
